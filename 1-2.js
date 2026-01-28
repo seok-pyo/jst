@@ -12,7 +12,7 @@ function debounce(fn, delay) {
     }
 
     timer = setTimeout(() => {
-      fn.apply(this, args);
+      fn.apply(this, args); // fn을 실행하되, 실행 중인 fn 내부의 this로 설정해라.
     }, delay); // delay 이후에만 실행하도록.
   };
 }
@@ -25,3 +25,5 @@ d();
 d();
 d();
 d();
+
+// 화살표 함수는 상위 스코프의 this로 고정시킨다.
