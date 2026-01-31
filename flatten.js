@@ -28,7 +28,8 @@ function flat2(arr) {
   let step = [];
   for (const e of arr) {
     if (Array.isArray(e)) {
-      step = [...step, ...flat2(e)];
+      // step = [...step, ...flat2(e)];
+      step.push(...flat2(e));
     } else {
       step.push(e);
     }
