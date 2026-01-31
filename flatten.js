@@ -22,4 +22,19 @@ function flat(arr) {
   return newArray;
 }
 
-console.log(flat(da));
+// console.log(flat(da));
+
+function flat2(arr) {
+  let step = [];
+  for (const e of arr) {
+    if (Array.isArray(e)) {
+      step = [...step, ...flat2(e)];
+    } else {
+      step.push(e);
+    }
+  }
+
+  return step;
+}
+
+console.log(flat2(da));
