@@ -24,7 +24,6 @@ loadData().then((r) => console.log("this is r", r));
 async function loadData2() {
   try {
     const [users, posts] = await Promise.all([fetchUser(), fetchPosts()]);
-
     return { users, posts };
   } catch (error) {
     console.log(error.message);

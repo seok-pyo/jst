@@ -39,6 +39,12 @@ function deepCopy(ori) {
       resultArr.push(deepCopy(e));
     }
     // return resultArr; // 여기서 호출해도 아래에서 호출한 것과 동일.
+    // for 문으로 들어왔다는 건 이미 arr라는 뜻. arr 단계, 즉 arr의 모든 원소를 다 돌것이기 때문에,
+    // 모든 원소를 순회하면서 arr이든 obj이든, 다른 자료형이든 새로운 배열에 추가해서
+    // 그걸 리턴하면 된다. 이 단계에서는 아래의 조건문들은 어짜치 들어가지 않기 때문에
+    // 맨 아래에서 하나, 이미 array로 조건문을 통과한 상태에서 새로운 배열을 반환하나 결과는 동일하다.
+    // 조건문을 한번더 적을 필요없이, 배열을 확인한 현재 위치의 조건문 안에서
+    // 만들어진 새로운 배열을 반환하면 된다.
   } else if (typeof ori === "object") {
     for (const key of Object.keys(ori)) {
       resultObj[key] = deepCopy(ori[key]);
