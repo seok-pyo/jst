@@ -1,0 +1,25 @@
+<html>
+  <head></head>
+  <body></body>
+  <script>
+    const ul = document.createElement("ul");
+    ul.className = "ul";
+    ul.setAttribute("ul-id", "123");
+
+    for (let i = 0; i < 5; i++) {
+      const li = document.createElement("li");
+      ul.appendChild(li);
+      if (i === 3) {
+        li.addEventListener("click", (e) => {
+          console.log("자식");
+          // e.stopPropagation();
+        });
+      }
+      li.textContent = i;
+    }
+
+    document.body.appendChild(ul);
+
+    ul.addEventListener("click", (e) => console.log(e.target.textContent));
+  </script>
+</html>

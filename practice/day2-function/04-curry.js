@@ -9,6 +9,18 @@
 
 function curry(fn) {
   // 여기에 구현
+
+  function curried(coll) {
+    return function (...collected) {
+      const all = [...coll, ...collected];
+      if (all.length >= fn.length) {
+        return fn(...all);
+      }
+      return curried(all);
+    };
+  }
+
+  return curried([]);
 }
 
 // 테스트
@@ -25,7 +37,9 @@ console.log(curriedAdd(1, 2, 3)); // 6
 
 // 실용 예시
 function formatDate(year, month, day) {
-  return `${year}-${month.toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`;
+  return `${year}-${month.toString().padStart(2, "0")}-${day
+    .toString()
+    .padStart(2, "0")}`;
 }
 
 const curriedFormat = curry(formatDate);

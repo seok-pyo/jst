@@ -10,6 +10,16 @@
 
 function throttle(fn, delay) {
   // 여기에 구현
+  let current = 0;
+
+  return function (...args) {
+    if (new Date() - current < delay) {
+      return;
+    } else {
+      fn.apply(this, args);
+      current = new Date();
+    }
+  };
 }
 
 // 테스트 1: 기본 사용

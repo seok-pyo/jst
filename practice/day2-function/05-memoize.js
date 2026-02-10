@@ -9,6 +9,26 @@
 
 function memoize(fn) {
   // 여기에 구현
+
+  // 함수의 인자를 저장하는 곳이 필요.
+  const cached = {};
+  return function (...args) {
+    const key = JSON.stringify(args);
+
+    if (key in cached) {
+      return cached[key];
+    }
+    cached[key] = fn(...args);
+    return cached[key];
+    // for (const item of args) {
+    //   if (item in cached) {
+    //     return cached[item];
+    //   } else {
+    //     cached[item] = fn(item); // 여러 인자를 받기 위해서, 반복문을 사용하기 보다. key로 처리하는 것이 좋다.
+    //     return cached[item];
+    //   }
+    // }
+  };
 }
 
 // 테스트 1: 기본 사용

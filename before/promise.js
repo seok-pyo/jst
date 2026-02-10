@@ -23,6 +23,8 @@ loadData().then((r) => console.log("this is r", r));
 
 async function loadData2() {
   try {
+    // promise.all은 인자로 함수의 배열을 받는다.
+    // 리턴값은 각각의 결과를 받는다.
     const [users, posts] = await Promise.all([fetchUser(), fetchPosts()]);
     return { users, posts };
   } catch (error) {
